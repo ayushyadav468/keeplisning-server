@@ -12,8 +12,8 @@ app.use('/api/auth', require('./routes/auth'));
 // Check for development or production
 if (process.env.NODE_ENV === 'production') {
 	// every get request is send to index.html in root directory
-	app.get('*', (req, res) => {
-		res.sendFile(path.join(__dirname, 'index.html'));
+	app.get('/', (req, res) => {
+		res.send('App is running in production mode');
 	});
 } else {
 	app.use('/', (req, res) => {
