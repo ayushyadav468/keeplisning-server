@@ -1,11 +1,14 @@
 const router = require('express').Router();
 const SpotifyWebAPI = require('spotify-web-api-node');
 
+const CLIENT_ID = process.env.CLIENT_ID;
+const REDIRECT_URL = process.env.REDIRECT_URL;
+
 // Spotify Credentials;
 const credentials = {
-	clientId: process.env.CLIENT_ID,
+	clientId: CLIENT_ID,
 	clientSecret: process.env.CLIENT_SECRET,
-	redirectUri: process.env.REDIRECT_URL
+	redirectUri: REDIRECT_URL
 };
 
 // Login with spotify
@@ -35,9 +38,10 @@ router.post('/login', (req, res) => {
 
 // Refresh access token
 router.post('/refresh', (req, res) => {
-	const code = req.body.code;
+	const refreshToken = req.body.refreshToken;
+	var spotifyApi = new SpotifyWebAPI({ ...credentials, refreshToken });
 	spotifyApi
-		.refreshAccessToken(code)
+		.refreshAccessToken()
 		.then((data) => {
 			spotifyApi.setAccessToken(data.body.access_token);
 			res.json({
