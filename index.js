@@ -7,12 +7,13 @@ const app = express();
 app.use(cors());
 
 // ROUTES
-app.use('/auth', require('./routes/auth'));
+app.use('/api/auth', require('./routes/auth'));
 
 // Check for development or production
 if (process.env.NODE_ENV === 'production') {
-	app.use('/', (req, res) => {
-		res.send('App is running in production mode');
+	// every get request is send to index.html in root directory
+	app.get('*', (req, res) => {
+		res.sendFile(path.join(__dirname, 'index.html'));
 	});
 } else {
 	app.use('/', (req, res) => {
