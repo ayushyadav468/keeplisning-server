@@ -1,0 +1,33 @@
+{
+	"name": "keeplisning-server",
+	"version": "1.0.0",
+	"description": "A proxy server for keeplisning",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"dev": "nodemon test.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ayushyadav468/keeplisning-server.git"
+	},
+	"keywords": [
+		"keeplisning",
+		"proxyserver"
+	],
+	"author": "Ayush Yadav",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ayushyadav468/keeplisning-server/issues"
+	},
+	"homepage": "https://github.com/ayushyadav468/keeplisning-server#readme",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^10.0.0",
+		"express": "^4.17.1",
+		"spotify-web-api-node": "^5.0.2"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.14"
+	}
+}
