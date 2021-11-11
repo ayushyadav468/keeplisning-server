@@ -9,6 +9,8 @@ app.use(express.json());
 
 // ROUTES
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/user', require('./routes/user'));
+app.use('/api/browser', require('./routes/browser'));
 
 // Check for development or production
 if (process.env.NODE_ENV === 'production') {
